@@ -42,10 +42,6 @@ function buildMetadata(sample) {
 
     // Use `.html("") to clear any existing metadata
     PANEL.html("");
-
-    // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to use d3 to append new
-    // tags for each key-value in the metadata.
     Object.entries(result).forEach(([key, value]) => {
       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
@@ -74,12 +70,9 @@ function buildCharts(sample) {
       var sampleValues = firstSample.sample_values;
       console.log(otuIds);
       console.log(otuLabels);
-      //console.log("hello");
       console.log(sampleValues);
   
       // 7. Create the yticks for the bar chart.
-      // Hint: Get the the top 10 otu_ids and map them in descending order  
-      //  so the otu_ids with the most bacteria are last. 
   
       var yticks = otuIds.slice(0,10).map(id => "OTU " + id).reverse();
       console.log(yticks);
@@ -109,15 +102,11 @@ function buildCharts(sample) {
           showarrow: false
         }]
       };
-      //console.log("hello");
       // 10. Use Plotly to plot the data with the layout. 
       Plotly.newPlot("bar", barData, barLayout, {responsive: true});
   
       // Bar and Bubble charts
       // Create the buildCharts function.
-      //function buildCharts(sample) {
-      // Use d3.json to load and retrieve the samples.json file 
-      //d3.json("samples.json").then((data) => {
   
       // 1. Create the trace for the bubble chart.
       var bubbleData = [{
@@ -138,7 +127,6 @@ function buildCharts(sample) {
         showlegend: false,
         xaxis: {title: "OTU ID", automargin: true},
         yaxis: {automargin: true},
-        //margin: { t: 50, r: 50, l: 50, b: 50 },
         hovermode: "closest"
       };
       console.log(bubbleLayout);
